@@ -1,47 +1,30 @@
-/* FUNCION secuenciaCompleta(input)
-    // Dividir la cadena de entrada en un array de cadenas
-    partes = dividir(input, " ")
+/* función secuenciaCompleta(input):
+    dividir input en un arreglo de cadenas partes usando espacio como delimitador
+    convertir cada cadena de partes a un número entero y almacenar en el arreglo numeros
+    
+    encontrar el valor mínimo de numeros y almacenarlo en min
+    encontrar el valor máximo de numeros y almacenarlo en max
+    
+    crear un arreglo de booleanos presentes con tamaño (max - min + 1)
+    
+    para cada numero en numeros:
+        marcar como verdadero en presentes[numero - min]
+    
+    crear una cadena vacía faltantes
+    
+    para cada índice i desde 0 hasta el tamaño de presentes - 1:
+        si presentes[i] es falso:
+            agregar el valor (i + min) a faltantes
+    
+    si faltantes está vacío:
+        devolver "1"
+    sino:
+        devolver faltantes sin el último espacio extra
 
-    // Convertir las cadenas a un array de enteros
-    numeros = convertirAEnteros(partes)
-
-    // Encontrar el mínimo y el máximo de la secuencia
-    min = encontrarMinimo(numeros)
-    max = encontrarMaximo(numeros)
-
-    // Crear un conjunto para almacenar los números de la secuencia
-    conjuntoNumeros = nuevo Conjunto()
-
-    // Agregar los números al conjunto
-    PARA cada num EN numeros HACER
-        conjuntoNumeros.agregar(num)
-    FIN PARA
-
-    // Crear una cadena para almacenar los números faltantes
-    faltantes = nueva Cadena()
-
-    // Buscar los números faltantes en la secuencia
-    PARA i DESDE min HASTA max HACER
-        SI NOT conjuntoNumeros.contiene(i) ENTONCES
-            faltantes = concatenar(faltantes, i + " ")
-        FIN SI
-    FIN PARA
-
-    // Si no hay números faltantes, devolver "1"
-    SI longitud(faltantes) == 0 ENTONCES
-        RETORNAR "1"
-    FIN SI
-
-    // Devolver la cadena de números faltantes, eliminando el último espacio
-    RETORNAR eliminarUltimoEspacio(faltantes)
-FIN FUNCION
-
-FUNCION principal()
-    // Ejemplos de uso
-    IMPRIMIR secuenciaCompleta("1 3 4 6") // "2 5"
-    IMPRIMIR secuenciaCompleta("1 2 3 4 5") // "1"
-    IMPRIMIR secuenciaCompleta("5 7 9 10") // "6 8"
-FIN FUNCION */
+función principal:
+    imprimir secuenciaCompleta("1 3 4 6")    // Debe devolver "2 5"
+    imprimir secuenciaCompleta("1 2 3 4 5")  // Debe devolver "1"
+    imprimir secuenciaCompleta("5 7 9 10")   // Debe devolver "6 8" */
 
 import java.util.Arrays;
 
@@ -52,7 +35,7 @@ public class Secuencia {
         String[] partes = input.split(" ");
         
         // Convertir las cadenas a un array de enteros
-        int[] numeros = Arrays..mapToInt(Integer::parseInt)
+        int[] numeros = Arrays.stream(partes)
                               .mapToInt(Integer::parseInt)
                               .toArray();
         
